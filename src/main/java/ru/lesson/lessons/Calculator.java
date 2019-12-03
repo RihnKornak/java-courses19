@@ -34,11 +34,10 @@ public class Calculator {
      * @param first Делимое
      * @param second Делитель
      */
-        public void division(int first, int second){
+        public void division(int first, int second) throws ArithmeticException{
               if (second != 0) this.result = first / second;
               else {
-                  System.out.println("На ноль делить нельзя!");
-                  this.cleanResult();
+                  throw new ArithmeticException("You tried divide by zero. This is impossible.");
               }
         }
 

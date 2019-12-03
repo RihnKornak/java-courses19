@@ -1,11 +1,15 @@
+package pet.clinic;
 import java.util.ArrayList;
 
 public class Clinic {
     private ArrayList<Customer> customers;
     private ArrayList<Pet> pets;
+    private static int idCounter = 0;
 
-    public static void main(String[] args) {
 
+    private int setId(){
+        int id = Clinic.idCounter++;
+        return id;
     }
 
     /**
@@ -14,6 +18,7 @@ public class Clinic {
      */
     public void addCustomer(Customer customer){
     ArrayList<Customer> customers = this.getCustomers();
+    customer.setId(this.setId());
     customers.add(customer);
     this.setCustomers(customers);
     }
@@ -75,8 +80,18 @@ public class Clinic {
         return pets;
     }
 
-    private void setPets(ArrayList<Pet> pets) {
-        this.pets = pets;
+    private void addPets(ArrayList<Pet> pets) {
+        for (Pet pet : pets) {
+            pet.setId(this.setId());
+            this.pets.add(pet);
+        }
+    }
+    private void addPets(Customer customer) {
+        ArrayList<Pet> pets = customer.getPets();
+        for (Pet pet : pets) {
+            pet.setId(this.setId());
+            this.pets.add(pet);
+        }
     }
 
 }
