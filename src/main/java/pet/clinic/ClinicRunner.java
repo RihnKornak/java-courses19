@@ -9,6 +9,7 @@ public class ClinicRunner {
         this.clinic = new Clinic();
         this.nameRandomizer = new NameRandomizer();
     }
+
     public static void main(String[] args) throws IncorrectInputException{
         ClinicRunner clinicRunner = new ClinicRunner(new Clinic(), new NameRandomizer());
         Pet pet;
