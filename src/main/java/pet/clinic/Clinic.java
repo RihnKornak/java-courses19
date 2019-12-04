@@ -16,7 +16,7 @@ public class Clinic {
      * This method add new customer to clinic
      * @param customer - the new customer
      */
-    public void addCustomer(Customer customer){
+    public void addCustomer(Customer customer) throws IncorrectInputException{
     ArrayList<Customer> customers = this.getCustomers();
     customer.setId(this.setId());
     customers.add(customer);
@@ -60,7 +60,7 @@ public class Clinic {
         return customer;
     }
 
-    public void editCustomerName(Customer customer, String name){
+    public void editCustomerName(Customer customer, String name) throws IncorrectInputException {
         customer.setName(name);
     }
 
