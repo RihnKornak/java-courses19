@@ -21,7 +21,7 @@ public class NullPet extends Pet {
     @Override
     public Customer getOwner() {
         this.setOwner(new NullCustomer());
-        return super.getOwner();
+        return this.getOwner();
     }
 
     @Override

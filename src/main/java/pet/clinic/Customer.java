@@ -5,6 +5,7 @@ public class Customer {
     private String name;
     private int id;
     private ArrayList<Pet> pets;
+
     public Customer(){ }
 
     public Customer(String name, Pet... pets){
@@ -21,18 +22,20 @@ public class Customer {
         return this.id;
     }
 
-    public void setId(int id) { //Тут позже надо добавить исключение, если id <= 0
+    public void setId(int id) throws IncorrectInputException {
         if (id > 0)
         this.id = id;
+        else throw new IncorrectInputException("Id must be a positive number");
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {  //Тут позже надо добавить исключение для имени null!!!
+    public void setName(String name) throws IncorrectInputException {
         if (name != null)
         this.name = name;
+        else throw new IncorrectInputException("Name mustn't be empty");
     }
 
     public ArrayList<Pet> getPets() {
