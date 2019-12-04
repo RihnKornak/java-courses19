@@ -6,7 +6,9 @@ public class Customer {
     private int id;
     private ArrayList<Pet> pets;
 
-    public Customer(){ }
+    public Customer(){
+        //this.pets = new ArrayList<>();
+    }
 
     public Customer(String name, Pet... pets){
         this.name = name;
@@ -25,7 +27,7 @@ public class Customer {
     public void setId(int id) throws IncorrectInputException {
         if (id > 0)
         this.id = id;
-        else throw new IncorrectInputException("Id must be a positive number");
+        else throw new IncorrectInputException("Id must be a positive number.");
     }
 
     public String getName() {

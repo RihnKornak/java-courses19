@@ -1,5 +1,5 @@
 package pet.clinic;
-public abstract class Pet {
+public  class Pet {
     private String name;
     private int id;
     private Customer owner;

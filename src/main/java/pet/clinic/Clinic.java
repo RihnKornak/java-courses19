@@ -4,11 +4,16 @@ import java.util.ArrayList;
 public class Clinic {
     private ArrayList<Customer> customers;
     private ArrayList<Pet> pets;
-    private static int idCounter = 0;
+    private int idCounter = 0;
+
+    public Clinic(){
+        this.customers = new ArrayList<>();
+        this.pets = new ArrayList<>();
+    }
 
 
-    private int setId(){
-        int id = Clinic.idCounter++;
+    public int setId(){
+        int id = ++this.idCounter;
         return id;
     }
 
@@ -17,10 +22,8 @@ public class Clinic {
      * @param customer - the new customer
      */
     public void addCustomer(Customer customer) throws IncorrectInputException{
-    ArrayList<Customer> customers = this.getCustomers();
     customer.setId(this.setId());
-    customers.add(customer);
-    this.setCustomers(customers);
+    this.customers.add(customer);
     }
 
     /**
@@ -68,7 +71,7 @@ public class Clinic {
             pet.setName(name);
     }
 
-    private ArrayList<Customer> getCustomers() {
+    public ArrayList<Customer> getCustomers() {
         return customers;
     }
 
@@ -76,19 +79,18 @@ public class Clinic {
         this.customers = customers;
     }
 
-    private ArrayList<Pet> getPets() {
+    public ArrayList<Pet> getPets() {
         return pets;
     }
 
-    private void addPets(ArrayList<Pet> pets) {
+    public void addPets(ArrayList<Pet> pets) {
         for (Pet pet : pets) {
             pet.setId(this.setId());
             this.pets.add(pet);
         }
     }
-    private void addPets(Customer customer) {
-        ArrayList<Pet> pets = customer.getPets();
-        for (Pet pet : pets) {
+    public void addPets(Customer customer) {
+        for (Pet pet : customer.getPets()) {
             pet.setId(this.setId());
             this.pets.add(pet);
         }
