@@ -31,7 +31,7 @@ public class Clinic {
      * @param customer - the customer
      * @return list of pets
      */
-    public ArrayList<Pet> PetsOfCustomer(Customer customer){
+    public ArrayList<Pet> petsOfCustomer(Customer customer){
         return customer.getPets();
     }
 
@@ -67,8 +67,11 @@ public class Clinic {
         customer.setName(name);
     }
 
-    public void editPetName(Pet pet, String name){
+    public void editPetName(Pet pet, String name) throws IncorrectInputException {
+
+        if (name != null && name.length() > 0) {
             pet.setName(name);
+        }
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -83,10 +86,19 @@ public class Clinic {
         return pets;
     }
 
+    public int getId() {
+        return this.idCounter;
+    }
+
     public void addPets(ArrayList<Pet> pets) {
         for (Pet pet : pets) {
-            pet.setId(this.setId());
-            this.pets.add(pet);
+            if (pet.getName() != null) {
+                pet.setId(this.setId());
+                this.pets.add(pet);
+            } else { pet = new NullPet();
+                    pet.setId(this.setId());
+                    this.pets.add(pet);
+            }
         }
     }
     public void addPets(Customer customer) {

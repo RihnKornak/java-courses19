@@ -18,15 +18,15 @@ public class NullCustomer extends Customer{
 
     @Override
     public int getId() {
-        return super.getId();
+        return this.id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(int id)  {
         this.id = -1;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws IncorrectInputException{
         //this.name = name;
     }
 

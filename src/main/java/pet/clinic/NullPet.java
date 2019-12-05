@@ -21,11 +21,12 @@ public class NullPet extends Pet {
     @Override
     public Customer getOwner() {
         this.setOwner(new NullCustomer());
-        return this.getOwner();
+        return this.owner;
     }
 
     @Override
     public void setOwner(Customer owner) {
+
         this.owner = new NullCustomer();
     }
 

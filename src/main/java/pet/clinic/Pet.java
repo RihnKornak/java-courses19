@@ -1,8 +1,9 @@
 package pet.clinic;
 public  class Pet {
-    private String name;
+    private String name = "Безымянный";
     private int id;
     private Customer owner;
+
 
     public int getId() {
         return id;
@@ -20,7 +21,7 @@ public  class Pet {
     public void setOwner(Customer owner) {
         if (owner != null)
         this.owner = owner;
-        else owner = new NullCustomer();
+        else this.owner = new NullCustomer();
 
     }
 
@@ -28,7 +29,9 @@ public  class Pet {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws IncorrectInputException {
+        if ((name.length()> 0) && (name != null))
         this.name = name;
+        else throw new IncorrectInputException("Name mustn't be empty");
     }
 }

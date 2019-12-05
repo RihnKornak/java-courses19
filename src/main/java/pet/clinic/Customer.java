@@ -7,7 +7,7 @@ public class Customer {
     private ArrayList<Pet> pets;
 
     public Customer(){
-        //this.pets = new ArrayList<>();
+        this.pets = new ArrayList<>();
     }
 
     public Customer(String name, Pet... pets){
