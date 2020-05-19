@@ -60,6 +60,17 @@ public class Clinic {
         return pet;
     }
 
+    public Customer searchCustomer(int id) {
+        ArrayList<Customer> customers = this.getCustomers();
+        Customer customer = new NullCustomer();
+        for (Customer eachCustomer : customers) {
+            if (id == eachCustomer.getId()) {
+                customer = eachCustomer;
+            }
+        }
+        return customer;
+    }
+
     public Customer searchCustomer(String name){
         ArrayList<Customer> customers = this.getCustomers();
         Customer customer = new NullCustomer();
@@ -114,6 +125,12 @@ public class Clinic {
             pet.setId(this.setId());
             this.pets.add(pet);
         }
+    }
+
+    public void deleteCustomer(Customer customer) throws IncorrectInputException{
+        Customer deletingCustomer = this.searchCustomer(customer.getId());
+        if (deletingCustomer instanceof NullCustomer)
+            throw new IncorrectInputException("No such customer in database");
     }
 
 }
