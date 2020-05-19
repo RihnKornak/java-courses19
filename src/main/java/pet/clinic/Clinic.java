@@ -5,15 +5,23 @@ public class Clinic {
     private ArrayList<Customer> customers;
     private ArrayList<Pet> pets;
     private int idCounter = 0;
+    private ArrayList<Integer> deletedIds;
 
     public Clinic(){
         this.customers = new ArrayList<>();
         this.pets = new ArrayList<>();
+        this.deletedIds = new ArrayList<>();
     }
 
 
     public int setId(){
-        int id = ++this.idCounter;
+        int id;
+        if (deletedIds.size() == 0)
+          id = ++this.idCounter;
+        else {
+            id = deletedIds.get(0);
+            deletedIds.remove(0);
+        }
         return id;
     }
 
