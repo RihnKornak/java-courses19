@@ -59,12 +59,22 @@ public class Clinic {
         }
         return pet;
     }
+    public Pet searchPet(int id){
+        Pet pet = new NullPet();
+        for (Pet eachPet : this.getPets()){
+            if (eachPet.getId() == id){
+                pet = eachPet;
+            }
+        }
+        return pet;
+
+    }
 
     public Customer searchCustomer(int id) {
         ArrayList<Customer> customers = this.getCustomers();
         Customer customer = new NullCustomer();
         for (Customer eachCustomer : customers) {
-            if (id == eachCustomer.getId()) {
+            if (eachCustomer.getId() == id) {
                 customer = eachCustomer;
             }
         }
@@ -131,6 +141,12 @@ public class Clinic {
         Customer deletingCustomer = this.searchCustomer(customer.getId());
         if (deletingCustomer instanceof NullCustomer)
             throw new IncorrectInputException("No such customer in database");
+    }
+
+    public void deletePet(Pet pet) throws IncorrectInputException{
+        Pet deletingPet = this.searchPet(pet.getId());
+        if (deletingPet instanceof NullPet)
+            throw new IncorrectInputException("No such pet in database");
     }
 
 }
